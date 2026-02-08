@@ -10,6 +10,7 @@ def get_connection() -> sqlite3.Connection:
     """Create a new database connection."""
     conn = sqlite3.connect(DATABASE_PATH)
     conn.row_factory = sqlite3.Row  # Enable dict-like access to rows
+    conn.execute("PRAGMA foreign_keys = ON")  # Enable foreign key support
     return conn
 
 
